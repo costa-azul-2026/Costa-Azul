@@ -32,10 +32,10 @@ class FormularioLoginState extends State<FormularioLogin>
       child: Center(
         child: Container( // container do formulario 
           width: 420, // largura dele
-          padding: EdgeInsets.all(48), // padding em todos os lados?
+          padding: EdgeInsets.all(48), // padding em todos os lados
           decoration: BoxDecoration( // decoração do box
             color: Colors.white,
-            borderRadius: BorderRadius.circular(16), // pq radius circular?
+            borderRadius: BorderRadius.circular(16), // pq radius circular
             border: Border.all(color: Colors.black26) 
           ),
 
