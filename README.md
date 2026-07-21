@@ -4,9 +4,9 @@
     <img alt = "logo" src= "docs/imagens/logo.png"> 
 <p>
 
-<p align="center">
+<p aling="center">
   <strong>Digitalizando sua jornada marítima.</strong>
-</p
+</p>
 
 # Descrição do projeto
 
