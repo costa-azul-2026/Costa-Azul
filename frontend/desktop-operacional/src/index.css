@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+    --color-azul-primario: #0A2F4E;
+    --color-azul-secundario: #031938;
+    --color-branco: #FFFFFF;
+    --color-azul-claro: #B8D0E8;
+
+    --font-sans: "DM Sans", sans-serif;
+
+    --text-titulo: 40px;
+    --text-titulo-pequeno: 30px;
+    --text-subtitulo: 32px;
+    --text-card: 24px;
+    --text-texto: 20px;
+    --text-legenda: 16px;
+    --text-rotulo: 12px;
+    --text-navbar: 18px;
+}
+
+*{
+    font-family: var(--font-sans);
+}

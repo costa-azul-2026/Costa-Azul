@@ -1,48 +1,61 @@
-# Costa Azul Desktop
+# Costa Azul — Frontend Desktop
 
-Sistema de gestão para companhias de cruzeiros e tripulação.
+Sistema de gestão para companhias de cruzeiros e tripulação, desenvolvido em React + TypeScript.
+
+## Tecnologias
+
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+
 
 ## Pré-requisitos
 
-- [Flutter SDK](https://flutter.dev/docs/get-started/install) 3.x ou superior
-- [Git](https://git-scm.com)
-- VS Code com extensão Flutter instalada
+Antes de começar, você precisa ter instalado:
+
+- [Node.js](https://nodejs.org) versão 18 ou superior
+- npm (já vem junto com o Node)
+
+Para verificar se já tem instalado:
+```bash
+node -v
+npm -v
+```
 
 ## Instalação
 
 **1. Clone o repositório**
 ```bash
-git clone https://github.com/costa-azul-2026/costa-azul-desktop.git
-cd costa-azul-desktop
+git clone https://github.com/costa-azul-2026/Costa-Azul.git
+cd Costa-Azul/frontend/desktop-operacional
 ```
 
 **2. Instale as dependências**
 ```bash
-flutter pub get
+npm install
 ```
 
 **3. Rode o projeto**
-
-No Chrome:
 ```bash
-flutter run -d chrome
+npm run dev
 ```
 
-No Windows:
-```bash
-flutter run -d windows
-```
+Acesse no navegador: `http://localhost:5173`
 
 ## Estrutura do projeto
 
 ```
-lib/
-  main.dart              → inicialização do app
-  app.dart               → configuração global
+src/
+  main.tsx              → inicialização do app
+  App.tsx               → configuração global
+  index.css             → biblioteca de estilo
   features/
-    login/               → tela de acesso ao sistema
-    companhia/           → área de gestão da companhia
-    tripulacao/          → área da tripulação
-  shared/
-    widgets/             → componentes reutilizáveis
+    login/              → tela de acesso ao sistema
+    companhia/          → área de gestão da companhia
+    tripulantes/        → área da tripulação
 ```
+
+## Contexto
+
+O Costa Azul é um sistema de gestão voltado para companhias de cruzeiros, centralizando informações sobre navios, tripulação, viagens, financeiro e operações em uma única plataforma.
