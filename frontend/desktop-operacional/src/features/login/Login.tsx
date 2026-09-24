@@ -1,16 +1,16 @@
-import { FormularioLogin } from "./components/FormularioLogin";
-import { TelaEsquerda } from "./components/TelaEsquerda";
-
+import { LoginForm } from "./components/LoginForm";
+import { LeftPanel } from "./components/LeftPanel";
+import './Login.css';
 export function Login(){
 
     return(
 
         <>
 
-            <div className="grid grid-cols-3 h-screen w-screen">
+            <div className="login-container">
 
-                <div className="grid col-span-1"> <TelaEsquerda/> </div>
-                <div className="grid col-span-2"> <FormularioLogin/> </div>
+                <div className="login-left"> <LeftPanel/> </div>
+                <div className="login-right"> <LoginForm/> </div>
 
             </div>
         

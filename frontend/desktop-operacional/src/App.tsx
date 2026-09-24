@@ -1,13 +1,14 @@
-import { Login } from "./features/login/Login"
+import { BrowserRouter } from "react-router-dom"
+import { AppRoutes } from "./routes/AppRoutes"
 
 
 function App() {
  
 
   return (
-    <>
-      <Login/>
-    </>
+    <BrowserRouter>
+      <AppRoutes/>
+    </BrowserRouter>
   )
 }
 
