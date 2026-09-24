@@ -1,10 +1,10 @@
-package com.costazul.logincomercial;
+package com.costaazul.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LogincomercialApplicationTests {
+class ApiApplicationTests {
 
 	@Test
 	void contextLoads() {

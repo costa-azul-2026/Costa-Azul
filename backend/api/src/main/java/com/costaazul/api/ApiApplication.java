@@ -1,13 +1,13 @@
-package com.costazul.logincomercial;
+package com.costaazul.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LogincomercialApplication {
+public class ApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LogincomercialApplication.class, args);
+		SpringApplication.run(ApiApplication.class, args);
 	}
 
 }

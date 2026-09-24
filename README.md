@@ -10,7 +10,7 @@
 
 # Descrição do projeto
 
-O Costa Azul é um projeto  que consiste unificar as três princiapis entidades que compõem o ecosistema de um cruzeiro em uma plataforma digital conjuta e correlacionada, solucionando suas principais necessidades e a aprimorando suas experiências. 
+O Costa Azul é um projeto  que consiste unificar as três principais entidades que compõem o ecosistema de um cruzeiro em uma plataforma digital conjuta e correlacionada, solucionando suas principais necessidades e a aprimorando suas experiências. 
 
 O sistema se divide em 2 plataformas visando seus atores
 - Aplicativo Mobile, voltado para os passageiros;
