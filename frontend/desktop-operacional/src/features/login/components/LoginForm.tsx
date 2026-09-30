@@ -4,25 +4,57 @@ import { useNavigate } from "react-router-dom";
 import { login, loginUser } from "../../../services/auth";
 
 import "./LoginForm.css";
+import axios from "axios";
 
 export function LoginForm() {
 
     const [perfil, setPerfil] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
     async function handleLogin() {
+        setError("");
+
+    if (!email && !password) {
+        setError("Preencha o e-mail e a senha.");
+        return;
+    }
+
+    if (!email) {
+        setError("Informe seu e-mail.");
+        return;
+    }
+
+    if (!password) {
+        setError("Informe sua senha.");
+        return;
+    }
         try {
             const dados = await loginUser(email, password);
 
-            login(dados.token, dados.user);
+            login(dados.token, dados.role);
 
             navigate("/dashboard");
 
+        
         } catch (error) {
-            console.log("Erro ao fazer login:", error);
+           
+           if (axios.isAxiosError(error)) {
+            const status = error.response?.status;
+
+            if (status === 403) {
+                setError("E-mail ou senha incorretos. Tente novamente.");
+            } else if (status === 500) {
+                setError("Erro no servidor. Tente novamente mais tarde.");
+            } else {
+                setError("Não foi possível realizar o login.");
+            }
+        } else {
+            setError("Ocorreu um erro inesperado.");
+        }
         }
     }
 
@@ -124,18 +156,23 @@ export function LoginForm() {
                         Esqueceu sua senha?
                     </a>
 
-                </div>
+                </div> 
+                
+    {error && (
+    <div className="login-error"> {error} </div> )}
 
                 {/* Entrar */}
                 <button
                     className="login-button"
-                    onClick={handleLogin}
-                >
+                    onClick={handleLogin}>
+                   
                     Entrar
                 </button>
 
             </div>
 
         </div>
+
+        
     );
 }
