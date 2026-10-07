@@ -1,7 +1,7 @@
 package com.costaazul.api.security;
 
-import com.costaazul.api.usuarios.domain.Usuario;
-import com.costaazul.api.usuarios.repository.UserRepository;
+import com.costaazul.api.usuarios.domain.Account;
+import com.costaazul.api.usuarios.repository.AccountRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,29 +9,33 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository usuarioRepository;
+    private final AccountRepository accountRepository;
 
-    public CustomUserDetailsService(UserRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
+    public CustomUserDetailsService(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String credencial) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByCredencial(credencial)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        // 1 Procura a conta pelo e-mail
+        Account account = accountRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Conta não encontrada com o e-mail: " + email));
 
-        // Spring Security exige "ROLE_" para validar o RBAC
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + usuario.getRole().name());
+        // 2 Extrai as roles da base de dados e adiciona o prefixo ROLE_ exigido pelo SpringSecurity
+        var authorities = account.getRoles().stream()
+                .map(userRole -> new SimpleGrantedAuthority("ROLE_" + userRole.getAppRole().getRoleName()))
+                .collect(Collectors.toList());
 
+        // 3 Devolve um utilizador padrão do SpringSecurity pronto para ser validado
         return new User(
-                usuario.getCredencial(),
-                usuario.getSenha(),
-                Collections.singletonList(authority)
+                account.getEmail(),
+                account.getPassword(),
+                authorities
         );
     }
 }

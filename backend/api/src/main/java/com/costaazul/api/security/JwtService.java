@@ -1,59 +1,90 @@
 package com.costaazul.api.security;
 
+import com.costaazul.api.usuarios.domain.Account;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.SecretKey;
+import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtService {
 
-    // Chave secreta de 256 bits gerada aleatoriamente (nunca exponha isso JJ)
-    private static final String SECRET_KEY = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
+    @Value("${api.security.token.secret:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}")
+    private String secretKey;
 
-    public String extrairCredencial(String token) {
-        return extrairClaim(token, Claims::getSubject);
+    @Value("${api.security.token.expiration:86400000}") // 24 horas por padrão
+    private long jwtExpiration;
+
+    // Novo método que recebe a Account e gera o Token com Claims extras
+    public String generateToken(Account account) {
+        Map<String, Object> extraClaims = new HashMap<>();
+
+        // 1. Embutir o UUID no token
+        extraClaims.put("idUser", account.getIdUser().toString());
+
+        // 2. Extrair a lista de permissões para o React saber qual tela mostrar
+        List<String> roles = account.getRoles().stream()
+                .map(userRole -> userRole.getAppRole().getRoleName())
+                .collect(Collectors.toList());
+        extraClaims.put("roles", roles);
+
+        return generateToken(extraClaims, account.getEmail());
     }
 
-    public String gerarToken(UserDetails userDetails) {
+    public String generateToken(Map<String, Object> extraClaims, String subject) {
         return Jwts.builder()
-                .setClaims(new HashMap<>())
-                .setSubject(userDetails.getUsername())
+                .setClaims(extraClaims)
+                .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)) // Expira em 24h
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
+                .signWith(getSignInKey())
                 .compact();
     }
 
-    public boolean isTokenValido(String token, UserDetails userDetails) {
-        final String credencial = extrairCredencial(token);
-        return (credencial.equals(userDetails.getUsername())) && !isTokenExpirado(token);
+    public String extractUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
     }
 
-    private boolean isTokenExpirado(String token) {
-        return extrairClaim(token, Claims::getExpiration).before(new Date());
-    }
-
-    private <T> T extrairClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = Jwts.parser()
-                .verifyWith(getSignInKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyBytes);
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
+
+    private boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+
+    private Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(getSignInKey()) // v0.12
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+    }
+
+    private javax.crypto.SecretKey getSignInKey() {
+        byte[] keyBytes = io.jsonwebtoken.io.Decoders.BASE64.decode(secretKey);
+        return io.jsonwebtoken.security.Keys.hmacShaKeyFor(keyBytes);
     }
 }
