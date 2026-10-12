@@ -1,0 +1,22 @@
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb__link {
+    color: #8a8a8a;
+    text-decoration: none;
+}
+
+.breadcrumb__link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb__current {
+    color: #111;
+}
+
+.breadcrumb__separator {
+    color: #111;
+}
