@@ -3,6 +3,8 @@ package com.costaazul.api.usuarios.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "app_role", schema = "users")
 @Getter
@@ -16,7 +18,7 @@ public class AppRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_role", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
-    private Integer idRole;
+    private UUID idRole;
 
     @Column(name = "role_name", nullable = false, unique = true, length = 50)
     private String roleName;

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "user_role", schema = "users")
@@ -18,7 +19,7 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user_role", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
-    private Integer idUserRole;
+    private UUID idUserRole;
 
     // Relacionamento com a Conta (Muitas permissões podem pertencer a uma conta)
     @ManyToOne(fetch = FetchType.LAZY)
