@@ -1,12 +1,12 @@
 package com.costaazul.api.usuarios.service;
 
-import com.costaazul.api.security.CustomUserDetailsService;
 import com.costaazul.api.security.JwtService;
+import com.costaazul.api.usuarios.domain.Account;
 import com.costaazul.api.usuarios.dto.LoginRequest;
 import com.costaazul.api.usuarios.dto.TokenResponse;
+import com.costaazul.api.usuarios.repository.AccountRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,26 +14,48 @@ public class AuthService {
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-    private final CustomUserDetailsService userDetailsService;
+    private final AccountRepository accountRepository;
 
-    public AuthService(AuthenticationManager authenticationManager, JwtService jwtService, CustomUserDetailsService userDetailsService) {
+    public AuthService(AuthenticationManager authenticationManager, JwtService jwtService, AccountRepository accountRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
-        this.userDetailsService = userDetailsService;
+        this.accountRepository = accountRepository;
+    }
+
+    public TokenResponse login(LoginRequest request) {
+        // 1. O Spring Security valida automaticamente a senha com o que está relacionado ao banco de dados
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getSenha()
+                )
+        );
+
+        // 2. Buscar os dados completos da conta
+        Account account = accountRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("Conta não encontrada."));
+
+        // 3. Mandar o serviço de JWT gerar o token
+        String jwtToken = jwtService.generateToken(account);
+
+        // 4. Devolver o token empacotado para o controlador enviar ao Frontend
+        return new TokenResponse(jwtToken);
     }
 
     public TokenResponse autenticar(LoginRequest request) {
-        // Valida credencial e senha no banco. Caso falhe ele lança exceção automaticamente
+        // 1. O Spring Security valida a senha informada
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.credencial(), request.senha())
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha())
         );
 
-        UserDetails user = userDetailsService.loadUserByUsername(request.credencial());
-        String jwtToken = jwtService.gerarToken(user);
+        // 2. Busca os dados completos da conta no banco
+        Account account = accountRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("Conta não encontrada."));
 
-        // Extrai a role (ex: ROLE_SUPER_ADMIN) para devolver ao frontend
-        String role = user.getAuthorities().iterator().next().getAuthority();
+        // 3. Gera o token JWT
+        String jwtToken = jwtService.generateToken(account);
 
-        return new TokenResponse(jwtToken, role);
+        // 4. Retorna o token (Esta é a linha que resolve o seu erro!)
+        return new TokenResponse(jwtToken);
     }
 }
