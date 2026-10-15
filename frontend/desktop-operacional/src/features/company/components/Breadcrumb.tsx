@@ -40,7 +40,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
 
         {index < items.length - 1 && (
             <span className="breadcrumb__separator">
-                ›
+                <i className="pi pi-chevron-right" />
             </span>
         )}
         </span>

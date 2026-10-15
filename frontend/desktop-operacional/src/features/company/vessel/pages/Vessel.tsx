@@ -1,4 +1,4 @@
-import { NavBar } from "../../components/NavBar";
+import {  TopBar } from "../../components/bars/TopBar";
 
 
 export function Vessel() {
@@ -9,7 +9,7 @@ export function Vessel() {
         
        <div className="flex min-h-screen flex-col">
     <header>
-        <NavBar />
+        <TopBar />
     </header>
 
     <main className="flex flex-col flex-1 items-center justify-center bg-azul-secundario gap-10">

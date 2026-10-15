@@ -1,12 +1,18 @@
 .breadcrumb {
     display: flex;
     align-items: center;
-    gap: 8px;
+}
+
+.breadcrumb__item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .breadcrumb__link {
     color: #8a8a8a;
     text-decoration: none;
+    
 }
 
 .breadcrumb__link:hover {
@@ -19,4 +25,8 @@
 
 .breadcrumb__separator {
     color: #111;
+  
 }
+
+
+

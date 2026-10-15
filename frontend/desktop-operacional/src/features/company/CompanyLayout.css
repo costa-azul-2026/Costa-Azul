@@ -1,0 +1,24 @@
+:root {
+    --sidebar-width: 250px;
+    --topbar-height: 64px;
+}
+
+.company-layout {
+    min-height: 100vh;
+}
+
+.company-layout__main {
+    min-width: 0;
+    min-height: 100vh;
+    margin-left: var(--sidebar-width);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.company-layout__content {
+    flex: 1;
+    min-width: 0;
+    padding: 24px;
+    background: #f8f9fc;
+}

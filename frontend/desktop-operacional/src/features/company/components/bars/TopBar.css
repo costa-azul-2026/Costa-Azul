@@ -1,0 +1,205 @@
+.topbar {
+    width: 100%;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 28px;
+
+    background: #030226;
+    border-bottom: 1px solid #e5e8ed;
+
+    gap: 24px;
+
+    flex-shrink: 0;
+}
+
+.topbar__left {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    flex-shrink: 0;
+}
+
+.topbar__company {
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 12px;
+
+    border: 1px solid #d8e0ea;
+    border-radius: 6px;
+
+    background: #ffffff;
+    color: #34435a;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.topbar__company i:first-child {
+    color: #1769aa;
+}
+
+.topbar__company i:last-child {
+    margin-left: 4px;
+
+    font-size: 8px;
+}
+
+.topbar__home {
+    color: #6d7889;
+
+    font-size: 11px;
+}
+
+.topbar__search {
+    width: 330px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 10px;
+
+    border: 1px solid #dce2e9;
+    border-radius: 6px;
+
+    background: #f8f9fb;
+
+    color: #8792a3;
+}
+
+.topbar__search > i {
+    font-size: 11px;
+}
+
+.topbar__search input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #303b4d;
+
+    font-family: inherit;
+    font-size: 10px;
+}
+
+.topbar__search input::placeholder {
+    color: #8b96a6;
+}
+
+.topbar__shortcut {
+    padding: 3px 5px;
+
+    border: 1px solid #d9dee6;
+    border-radius: 3px;
+
+    background: #ffffff;
+
+    color: #929baa;
+
+    font-size: 8px;
+}
+
+.topbar__actions {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+}
+
+.topbar__icon-button {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #667387;
+
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+.topbar__icon-button i {
+    font-size: 13px;
+}
+
+.topbar__icon-button:hover {
+    color: #1769aa;
+}
+
+.topbar__avatar {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 2px solid #1769aa;
+    border-radius: 50%;
+
+    background: #d9e8f8;
+    color: #1769aa;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .topbar {
+        padding: 0 16px;
+    }
+
+    .topbar__home {
+        display: none;
+    }
+
+    .topbar__search {
+        width: 260px;
+    }
+}
+
+@media (max-width: 650px) {
+    .topbar__left {
+        display: none;
+    }
+
+    .topbar__search {
+        width: 100%;
+    }
+}

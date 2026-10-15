@@ -8,6 +8,7 @@ import { Finance } from "../features/company/financial/Finance";
 import { Settings } from "../features/company/settings/Settings";
 import { Relatorios } from "../features/company/relatorios/Relatorios";
 import { VesselCreate } from "../features/company/vessel/pages/VesselCreate";
+import { CompanyLayout } from "../features/company/CompanyLayout";
 
 
 
@@ -15,16 +16,20 @@ import { VesselCreate } from "../features/company/vessel/pages/VesselCreate";
 export function AppRoutes() {
     return(
         <Routes>
+            <Route path="/dev" element={<Navigate to="/dashboard" />} />
              <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/vessel" element={<Vessel />} />
-            <Route path="/vessel/create" element={<VesselCreate />} />
-            <Route path="/trips" element={<Trips />} />
-            <Route path="/crew" element={<Crew />} />
-            <Route path="/finance" element={<Finance />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path= "/relatorios" element={<Relatorios />} />
+            
+            <Route element={ <CompanyLayout /> }>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/vessel" element={<Vessel />} />
+                <Route path="/vessel/create" element={<VesselCreate />} />
+                <Route path="/trips" element={<Trips />} />
+                <Route path="/crew" element={<Crew />} />
+                <Route path="/finance" element={<Finance />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path= "/relatorios" element={<Relatorios />} />
+            </Route >
         </Routes>
     );
 }

@@ -1,0 +1,293 @@
+/* =========================================================
+   PÁGINA
+========================================================= */
+
+.vessel-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.vessel-page > .vessel-card {
+    margin-top: 24px;
+}
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.vessel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin: 18px 0 28px;
+}
+
+.vessel-header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #171717;
+}
+
+.vessel-header p {
+    max-width: 420px;
+    margin: 6px 0 0;
+    color: #7c8491;
+    font-size: 14px;
+}
+
+.vessel-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* =========================================================
+   LAYOUT DAS SEÇÕES
+========================================================= */
+
+.vessel-basic-layout {
+    width: 100%;
+}
+
+.vessel-bottom-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.vessel-bottom-layout .vessel-card {
+    margin: 0;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.vessel-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.vessel-card .p-card-body {
+    padding: 26px;
+}
+
+
+/* =========================================================
+   TÍTULO DA SEÇÃO
+========================================================= */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #172033;
+}
+
+.section-icon {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: #e9e8ff;
+    color: #3455c5;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.vessel-fields-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-field label {
+    font-size: 13px;
+    color: #3d4350;
+}
+
+.form-field label span {
+    color: #e53935;
+}
+
+.form-field .p-inputtext,
+.form-field .p-inputnumber,
+.form-field .p-dropdown {
+    width: 100%;
+}
+
+.form-field .p-inputtext,
+.form-field .p-inputnumber-input,
+.form-field .p-dropdown {
+    height: 38px;
+}
+
+.form-field .p-inputnumber {
+    display: flex;
+}
+
+.form-field .p-inputnumber-input {
+    width: 100%;
+}
+
+
+/* =========================================================
+   INFORMAÇÕES BÁSICAS + FOTO
+========================================================= */
+
+.vessel-basic-content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 28px;
+}
+
+.vessel-photo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 18px;
+
+    border: 1px solid #e3e5e8;
+    border-radius: 10px;
+}
+
+.photo-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #303745;
+}
+
+.photo-title i {
+    color: #315ccc;
+}
+
+.vessel-photo-card small {
+    color: #7b8190;
+}
+
+.photo-placeholder {
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 8px;
+
+    background: #f1f3f6;
+    color: #8a909b;
+}
+
+.photo-placeholder i {
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   DOCUMENTOS
+========================================================= */
+
+.documents-description {
+    color: #7c8491;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.upload-empty {
+    min-height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #8a909b;
+}
+
+.upload-empty i {
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   BOTÕES FINAIS
+========================================================= */
+
+.vessel-footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 1000px) {
+    .vessel-header {
+        flex-direction: column;
+    }
+
+    .vessel-basic-content {
+        grid-template-columns: 1fr;
+    }
+
+    .vessel-bottom-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .vessel-fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vessel-header__actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .vessel-footer-actions {
+        justify-content: stretch;
+        flex-wrap: wrap;
+    }
+}
