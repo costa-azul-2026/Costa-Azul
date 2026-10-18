@@ -1,8 +1,34 @@
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 
-export function VesselOperational() {
+interface VesselOperationalProps {
+    idHomePort: string | null;
+    setIdHomePort: (value: string | null) => void;
+
+    mainTerminal: string;
+    setMainTerminal: (value: string) => void;
+
+    idManager: string | null;
+    setIdManager: (value: string | null) => void;
+
+    operationalEmail: string;
+    setOperationalEmail: (value: string) => void;
+}
+
+export function VesselOperational({
+    idHomePort,
+    setIdHomePort,
+    mainTerminal,
+    setMainTerminal,
+    idManager,
+    setIdManager,
+    operationalEmail,
+    setOperationalEmail
+}: VesselOperationalProps) {
+
     return (
+
+        <section className="vessel-section">
         <Card className="vessel-card">
             <div className="section-title">
                 <div className="section-icon">
@@ -23,8 +49,12 @@ export function VesselOperational() {
                         id="porto-base"
                         placeholder="Inserir porto"
                         className="w-full"
+                        disabled 
+                        value={idHomePort}
+                        onChange={(e) => setIdHomePort(e.target.value)}
                     />
                 </div>
+                    
 
                 <div className="form-field">
                     <label htmlFor="terminal">
@@ -35,6 +65,8 @@ export function VesselOperational() {
                         id="terminal"
                         placeholder="Inserir terminal"
                         className="w-full"
+                        value={mainTerminal}
+                        onChange={(e) => setMainTerminal(e.target.value)}
                     />
                 </div>
 
@@ -47,6 +79,8 @@ export function VesselOperational() {
                         id="gerente"
                         placeholder="Inserir gerente"
                         className="w-full"
+                        value={idManager}
+                        onChange={(e) => setIdManager(e.target.value)}
                     />
                 </div>
 
@@ -60,10 +94,14 @@ export function VesselOperational() {
                         type="email"
                         placeholder="Inserir email"
                         className="w-full"
+                        value={operationalEmail}
+                        onChange={(e) => setOperationalEmail(e.target.value)}
                     />
                 </div>
 
             </div>
         </Card>
+
+        </section>
     );
 }

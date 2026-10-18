@@ -2,7 +2,33 @@ import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 
-export function VesselCertification() {
+
+interface VesselCertificationProps {
+    classificationSociety: string;
+    setClassificationSociety: (value: string) => void;
+
+    ismCertification: string;
+    setIsmCertification: (value: string) => void;
+
+    certificateExpiryDate: string;
+    setCertificateExpiryDate: (value: string) => void;
+
+    operationalStatus: string;
+    setOperationalStatus: (value: string) => void;
+}
+
+export function VesselCertification({
+    classificationSociety,
+    setClassificationSociety,
+    ismCertification,
+    setIsmCertification,
+    certificateExpiryDate,
+    setCertificateExpiryDate,
+    operationalStatus,
+    setOperationalStatus
+}: VesselCertificationProps) {
+     
+
     const status = [
         { label: "Ativo", value: "ATIVO" },
         { label: "Inativo", value: "INATIVO" },
@@ -10,6 +36,7 @@ export function VesselCertification() {
     ];
 
     return (
+        <section className="vessel-section">
         <Card className="vessel-card">
             <div className="section-title">
                 <div className="section-icon">
@@ -30,8 +57,12 @@ export function VesselCertification() {
                         id="classificadora"
                         placeholder="Inserir classificadora"
                         className="w-full"
+                        value={classificationSociety}
+                        onChange={(e) => setClassificationSociety(e.target.value)}
                     />
                 </div>
+                
+                
 
                 <div className="form-field">
                     <label htmlFor="ism">
@@ -42,8 +73,12 @@ export function VesselCertification() {
                         id="ism"
                         placeholder="Inserir certificação"
                         className="w-full"
+                        value={ismCertification}
+                        onChange={(e) => setIsmCertification(e.target.value)}
                     />
                 </div>
+                    
+                
 
                 <div className="form-field">
                     <label>
@@ -56,7 +91,10 @@ export function VesselCertification() {
                         optionValue="value"
                         placeholder="Selecionar status"
                         className="w-full"
+                        value={operationalStatus}
+                        onChange={(e) => setOperationalStatus(e.value)}
                     />
+                
                 </div>
 
                 <div className="form-field">
@@ -66,12 +104,16 @@ export function VesselCertification() {
 
                     <InputText
                         id="validade"
+                        type="date"
                         placeholder="Inserir validade"
                         className="w-full"
+                        value={certificateExpiryDate ? certificateExpiryDate.toString() : ""}
+                        onChange={(e) => setCertificateExpiryDate(e.target.value)}
                     />
                 </div>
 
             </div>
         </Card>
+        </section>
     );
 }

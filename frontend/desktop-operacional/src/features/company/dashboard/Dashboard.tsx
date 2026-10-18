@@ -1,13 +1,11 @@
-import { TopBar } from "../components/bars/TopBar";
+
 
 export function Dashboard() {
     return(
         <>
         
        <div className="flex min-h-screen flex-col">
-    <header>
-        <TopBar />
-    </header>
+   
 
     <main className="flex flex-col flex-1 items-center justify-center bg-azul-secundario gap-10">
         <h1 className="text-center text-3xl font-bold text-white">

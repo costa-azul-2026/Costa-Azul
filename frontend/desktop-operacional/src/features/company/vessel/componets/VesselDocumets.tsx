@@ -1,8 +1,19 @@
-import { Button } from "primereact/button";
+
 import { Card } from "primereact/card";
 import { FileUpload } from "primereact/fileupload";
 
-export function VesselDocuments() {
+
+interface VesselDocumentsProps {
+    documents: File[];
+    setDocuments: (value: File[]) => void;
+}
+
+export function VesselDocuments({
+    documents,
+    setDocuments
+}: VesselDocumentsProps) {
+    
+
     return (
         <Card className="vessel-card">
             <div className="section-title">
@@ -17,24 +28,45 @@ export function VesselDocuments() {
                 Anexe o certificado de classe, plano geral, inscrição e outros documentos.
             </p>
 
-            <FileUpload
+            <FileUpload 
                 name="documents"
+                className="documents-upload"
                 multiple
                 accept=".pdf,.jpg,.jpeg,.png"
                 auto={false}
                 customUpload
-                headerTemplate={() => (
-                    <Button type="button">
-                        <i className="pi pi-plus" /> Inserir Arquivos
-                    </Button>
-                )}
+                chooseOptions={{ 
+                    label: "Selecionar arquivos",
+                    icon: "pi pi-upload",
+                 }}
+
+                 uploadOptions={{
+                    style: { display: "none" }
+                 }}
+
+                 cancelOptions={{
+                    style: { display: "none" }
+                 }}
+
+
+                onSelect={(e) => {
+                    setDocuments(e.files);
+                }}
+
                 emptyTemplate={
                     <div className="upload-empty">
                         <i className="pi pi-folder" />
                         <span>Ou arraste os arquivos aqui</span>
                     </div>
                 }
+                
             />
+
+            {documents.length > 0 && (
+            <small>
+                {documents.length} arquivo(s) selecionado(s)
+             </small>
+        )}
         </Card>
     );
 }

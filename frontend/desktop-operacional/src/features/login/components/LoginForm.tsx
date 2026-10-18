@@ -158,8 +158,8 @@ export function LoginForm() {
 
                 </div> 
                 
-    {error && (
-    <div className="login-error"> {error} </div> )}
+        {error && (
+            <div className="login-error"> {error} </div> )}
 
                 {/* Entrar */}
                 <button

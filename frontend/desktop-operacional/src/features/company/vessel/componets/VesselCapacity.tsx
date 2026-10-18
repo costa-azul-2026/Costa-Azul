@@ -1,8 +1,33 @@
 import { Card } from "primereact/card";
 import { InputNumber } from "primereact/inputnumber";
 
-export function VesselCapacity() {
+
+
+interface VesselCapacityProps {
+    maxPassengerCapacity: number | null;
+    setMaxPassengerCapacity: (value: number | null) => void;
+
+    maxCrewCapacity: number | null;
+    setMaxCrewCapacity: (value: number | null) => void;
+
+    lifeboatTotalCapacity: number | null;
+    setLifeboatTotalCapacity: (value: number | null) => void;
+}
+
+export function VesselCapacity({
+    maxPassengerCapacity,
+    setMaxPassengerCapacity,
+    maxCrewCapacity,
+    setMaxCrewCapacity,
+    lifeboatTotalCapacity,
+    setLifeboatTotalCapacity
+}: VesselCapacityProps) {
+
+
+        
     return (
+
+        <section className="vessel-section">
         <Card className="vessel-card">
             <div className="section-title">
                 <div className="section-icon">
@@ -23,6 +48,8 @@ export function VesselCapacity() {
                         id="max-passengers"
                         placeholder="Inserir valor"
                         className="w-full"
+                        value={maxPassengerCapacity}
+                        onValueChange={(e) => setMaxPassengerCapacity(e.value ?? null)}
                     />
                 </div>
 
@@ -35,8 +62,12 @@ export function VesselCapacity() {
                         id="max-crew"
                         placeholder="Inserir valor"
                         className="w-full"
+                        value={maxCrewCapacity}
+                        onValueChange={(e) => setMaxCrewCapacity(e.value ?? null)}
                     />
                 </div>
+                    
+                
 
                 <div className="form-field">
                     <label htmlFor="total-cabins">
@@ -60,10 +91,15 @@ export function VesselCapacity() {
                         id="lifeboats"
                         placeholder="Inserir valor"
                         className="w-full"
+                        value={lifeboatTotalCapacity}
+                        onValueChange={(e) => setLifeboatTotalCapacity(e.value ?? null)}
                     />
                 </div>
+                
+    
 
             </div>
         </Card>
+        </section>
     );
 }

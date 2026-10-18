@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./SideBar.css";
 
 export function SideBar() {
+    
+    const navigate = useNavigate();
+
     return (
+
+        
         <aside className="sidebar">
 
             <div className="sidebar__logo">
@@ -15,7 +21,7 @@ export function SideBar() {
                     GLOBAL ADMINISTRATION
                 </span>
 
-                <button className="sidebar__item sidebar__item--active">
+                <button className="sidebar__item sidebar__item--active"  onClick={() => navigate("/dashboard")} >
                     <i className="pi pi-th-large" />
                     <span>Dashboard</span>
                 </button>
@@ -24,7 +30,7 @@ export function SideBar() {
                     OPERAÇÃO
                 </span>
 
-                <button className="sidebar__item">
+                <button className="sidebar__item" onClick={() => navigate("/vessel/create")}>
                     <i className="pi pi-sitemap" />
                     <span>Frota e Viagens</span>
                     <i className="pi pi-chevron-right sidebar__arrow" />

@@ -46,6 +46,8 @@
 }
 
 
+
+
 /* =========================================================
    LAYOUT DAS SEÇÕES
 ========================================================= */
@@ -79,6 +81,10 @@
 
 .vessel-card .p-card-body {
     padding: 26px;
+}
+
+.vessel-section {
+    margin-bottom: 24px;
 }
 
 
@@ -217,6 +223,34 @@
     font-size: 32px;
 }
 
+.photo-placeholder img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.photo-upload {
+    width: 100%;
+}
+
+.photo-upload .p-button {
+    width: 100%;
+    justify-content: center;
+    min-height: 0;
+    height: auto;
+}
+
+.photo-upload .p-fileupload-buttonbar {
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+.photo-upload .p-fileupload-content {
+    min-height: 0;
+    padding: 0;
+}
 
 /* =========================================================
    DOCUMENTOS
@@ -229,22 +263,51 @@
 }
 
 .upload-empty {
-    min-height: 120px;
-
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    gap: 12px;
-
-    color: #8a909b;
+    gap: 16px;
+    color: #7c8491;
 }
 
 .upload-empty i {
     font-size: 32px;
 }
 
+.documents-upload {
+    display: flex;
+    flex-direction: column;
+}
+
+.documents-upload .p-fileupload-content {
+    order: 1;
+}
+
+.documents-upload .p-fileupload-buttonbar {
+    order: 2;
+}
+
+.documents-upload .p-fileupload-buttonbar .p-button {
+    width: 100%;
+    justify-content: center;
+    height: 56px;
+    font-size: 20px;
+}
+
+.documents-upload .p-fileupload-buttonbar {
+    padding: 0;
+    border: none;
+    margin-top: 20px;
+}
+
+.documents-upload .p-fileupload-content {
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* =========================================================
    BOTÕES FINAIS
