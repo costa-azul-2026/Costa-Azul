@@ -49,7 +49,8 @@ public class SecurityConfig {
                         ).permitAll()
 
                         // Muro de contenção DDD + RBAC
-                        .requestMatchers("/api/erp/**").hasAnyRole("SUPER_ADMIN", "ADMIN_COMPANHIA")
+                        .requestMatchers("/api/erp/**")
+                        .hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN_COMPANHIA")
                         .requestMatchers("/api/crew/**").hasAnyRole("SUPER_ADMIN", "COMANDANTE", "OFICIAL", "TRIPULACAO")
 
                         // Exige token válido

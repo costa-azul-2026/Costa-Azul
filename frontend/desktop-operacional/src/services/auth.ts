@@ -1,5 +1,6 @@
 import api from "./api";
 
+
 export const TOKEN_KEY = "@costaazul-token";
 export const ROLE_KEY = "@costaazul-role";
 
@@ -8,7 +9,7 @@ export async function loginUser(
     senha: string
 ){
     const response = await api.post('/api/auth/login', { 
-        credencial, 
+       email: credencial, 
         senha 
     });
     return response.data;
