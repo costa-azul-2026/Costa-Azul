@@ -1,4 +1,4 @@
-```markdown
+
 # Costa-Azul
 
 <p align="center">
@@ -82,7 +82,7 @@ Costa-Azul/
 - `database/scripts`: scripts SQL.
 - `docs`: documentação e recursos do projeto.
 
----
+
 
 # Como executar o projeto
 
