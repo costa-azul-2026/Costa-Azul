@@ -69,6 +69,7 @@ export function VesselTechnicalInfo({
                     </label>
 
                     <InputNumber
+                        locale="pt-BR"
                         id="arqueacao-bruta"
                         placeholder="Inserir valor arqueação"
                         className="w-full"
@@ -114,6 +115,7 @@ export function VesselTechnicalInfo({
                     </label>
 
                     <InputNumber
+                    locale="pt-BR"
                         id="porte-bruto"
                         placeholder="Inserir porte bruto"
                         className="w-full"
@@ -148,6 +150,10 @@ export function VesselTechnicalInfo({
                     </label>
 
                     <InputNumber
+                      locale="en-US"
+                        useGrouping={false}
+                        minFractionDigits={2}
+                        maxFractionDigits={2}
                         id="boca-maxima"
                         placeholder="Inserir boca máxima"
                         className="w-full"
@@ -178,6 +184,10 @@ export function VesselTechnicalInfo({
 
                     <InputNumber
                         id="velocidade"
+                        locale="en-US"
+                        useGrouping={false}
+                        minFractionDigits={2}
+                        maxFractionDigits={2}
                         placeholder="Inserir velocidade"
                         className="w-full"
                         value={maxServiceSpeed}

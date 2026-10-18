@@ -46,6 +46,7 @@ export function VesselCapacity({
 
                     <InputNumber
                         id="max-passengers"
+                        locale="pt-BR"
                         placeholder="Inserir valor"
                         className="w-full"
                         value={maxPassengerCapacity}
@@ -60,6 +61,7 @@ export function VesselCapacity({
 
                     <InputNumber
                         id="max-crew"
+                        locale="pt-BR"
                         placeholder="Inserir valor"
                         className="w-full"
                         value={maxCrewCapacity}
@@ -76,6 +78,7 @@ export function VesselCapacity({
 
                     <InputNumber
                         id="total-cabins"
+                        locale="pt-BR"
                         placeholder="Campo automático - calculado após inserção de cabine"
                         className="w-full"
                         disabled

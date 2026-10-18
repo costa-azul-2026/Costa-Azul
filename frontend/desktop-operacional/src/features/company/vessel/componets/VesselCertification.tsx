@@ -30,10 +30,10 @@ export function VesselCertification({
      
 
     const status = [
-        { label: "Ativo", value: "ATIVO" },
-        { label: "Inativo", value: "INATIVO" },
-        { label: "Em manutenção", value: "MANUTENCAO" },
-    ];
+    { label: "Ativo", value: "ACTIVE" },
+    { label: "Inativo", value: "INACTIVE" },
+    { label: "Em manutenção", value: "MAINTENANCE" },
+];
 
     return (
         <section className="vessel-section">

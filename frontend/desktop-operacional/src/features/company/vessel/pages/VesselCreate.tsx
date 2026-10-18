@@ -100,6 +100,8 @@ export function VesselCreate() {
         documents: []
     };
 
+    console.log("STATUS ENVIADO:", operationalStatus);
+
     try {
         const response = await createVessel(vessel);
 
