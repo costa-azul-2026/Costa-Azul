@@ -14,16 +14,18 @@ import { createVessel, type VesselRequestDTO } from "../../../../services/vessel
 function FormActions({ className, onCreate }: { className: string; onCreate: () => void; }) {
     return (
         <div className={className}>
-            <Button severity="secondary" outlined>
-                Cancelar
-            </Button>
+            <div className="vessel-actions-secondary">
+                <Button className="vessel-btn-secondary" severity="secondary" outlined>
+                    Cancelar
+                </Button>
 
-            <Button severity="secondary" outlined>
-                Salvar Rascunho
-            </Button>
+                <Button className="vessel-btn-secondary" severity="secondary" outlined>
+                    Salvar Rascunho
+                </Button>
+            </div>
 
-            <Button onClick={onCreate}>
-                Cadastrar Embarcação
+            <Button className="vessel-btn-primary" onClick={onCreate}>
+                <span>Cadastrar Embarcação</span>
                 <i className="pi pi-check-circle" />
             </Button>
         </div>

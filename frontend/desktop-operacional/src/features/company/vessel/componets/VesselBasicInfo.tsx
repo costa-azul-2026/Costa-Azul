@@ -51,11 +51,11 @@ export function VesselBasicInfo({
             <div className="vessel-basic-content">
 
                 {/* CARD 1 — Informações */}
-                <Card className="vessel-card">
+                <Card className="vessel-card vessel-card--basic">
 
                     <div className="section-title">
                         <div className="section-icon">
-                            <i className="pi pi-briefcase" />
+                            <i className="pi pi-id-card" />
                         </div>
 
                         <h2>Seção 1 - Informações Básicas</h2>
@@ -150,7 +150,7 @@ export function VesselBasicInfo({
                 </Card>
 
                 {/* CARD 2 — Foto */}
-                <Card className="vessel-card">
+                <Card className="vessel-card vessel-card--upload">
 
                     <div className="vessel-photo-card">
 
@@ -162,17 +162,25 @@ export function VesselBasicInfo({
                             </strong>
                         </div>
 
-                        <small>
+                        <small className="photo-subtitle">
                             Dimensão recomendada: 2560 × 1440 px
                             (JPG, PNG,...)
                         </small>
 
                         <div className="photo-placeholder">
                             {photoPreview ? (
-                                <img
-                                    src={photoPreview}
-                                    alt="Pré-visualização da embarcação"
-                                />
+                                <>
+                                    <img
+                                        src={photoPreview}
+                                        alt="Pré-visualização da embarcação"
+                                    />
+                                    {vesselPhoto && (
+                                        <div className="photo-overlay-badge">
+                                            <span className="photo-overlay-dot" />
+                                            <span>{vesselPhoto.name.toUpperCase()}</span>
+                                        </div>
+                                    )}
+                                </>
                             ) : (
                                 <>
                                     <i className="pi pi-image" />
@@ -192,7 +200,7 @@ export function VesselBasicInfo({
                             customUpload
                             className="photo-upload"
                             chooseOptions={{
-                                label: "Selecionar a imagem",
+                                label: photoPreview ? "Substituir imagem" : "Selecionar a imagem",
                                 icon: "none"
                             }}
                             uploadOptions={{

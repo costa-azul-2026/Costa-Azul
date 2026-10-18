@@ -1,52 +1,128 @@
 /* =========================================================
-   PÁGINA
+   PÁGINA — CADASTRO DE EMBARCAÇÃO
 ========================================================= */
 
 .vessel-page {
     width: 100%;
-    min-height: 100vh;
-    padding: 24px;
+    max-width: 1056px;
+    padding: 0;
     box-sizing: border-box;
 }
 
 .vessel-page > .vessel-card {
-    margin-top: 24px;
+    margin-top: var(--space-8);
 }
 
 /* =========================================================
-   CABEÇALHO
+   CABEÇALHO DA PÁGINA
 ========================================================= */
 
 .vessel-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 24px;
-    margin: 18px 0 28px;
+    align-items: flex-end;
+    gap: var(--space-6);
+    margin: 11px 0 40px;
 }
 
 .vessel-header h1 {
     margin: 0;
+    font-family: var(--font-display);
     font-size: 32px;
-    font-weight: 700;
-    color: #171717;
+    line-height: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-gray-900);
 }
 
 .vessel-header p {
-    max-width: 420px;
-    margin: 6px 0 0;
-    color: #7c8491;
-    font-size: 14px;
+    max-width: 355px;
+    margin: var(--space-2) 0 0;
+    color: var(--color-gray-500);
+    font-family: var(--font-sans);
+    font-size: var(--text-label-md);
+    line-height: var(--leading-label-md);
+    font-weight: var(--font-weight-label-md);
 }
+
+/* =========================================================
+   BOTÕES DE AÇÃO (TOPO E RODAPÉ)
+========================================================= */
 
 .vessel-header__actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-4);
+    flex-shrink: 0;
 }
 
+.vessel-actions-secondary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
 
+.vessel-footer-actions {
+    width: 100%;
+    max-width: 685px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-6);
+    margin-top: 40px;
+}
 
+.vessel-footer-actions .vessel-actions-secondary {
+    gap: var(--space-6);
+}
+
+.vessel-btn-secondary.p-button {
+    height: 50px;
+    padding: 0 20px;
+    border: var(--border-width) solid var(--color-gray-500) !important;
+    border-radius: var(--radius-sm);
+    background: var(--color-white) !important;
+    box-shadow: var(--shadow-elev-2);
+    color: var(--color-gray-800) !important;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    font-weight: 400;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.vessel-btn-secondary.p-button:hover {
+    background: var(--color-gray-50) !important;
+    border-color: var(--color-gray-700) !important;
+}
+
+.vessel-btn-primary.p-button {
+    height: 50px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border: var(--border-width) solid var(--color-primary-500) !important;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-500) !important;
+    box-shadow: var(--shadow-elev-2);
+    color: var(--color-white) !important;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    font-weight: 400;
+    transition: background-color 0.15s ease;
+}
+
+.vessel-btn-primary.p-button:hover {
+    background: var(--color-primary-600) !important;
+    border-color: var(--color-primary-600) !important;
+}
+
+.vessel-btn-primary.p-button i {
+    font-size: 18px;
+}
 
 /* =========================================================
    LAYOUT DAS SEÇÕES
@@ -56,37 +132,61 @@
     width: 100%;
 }
 
-.vessel-bottom-layout {
+.vessel-basic-content {
     display: grid;
-    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
-    gap: 24px;
-    margin-top: 24px;
+    grid-template-columns: minmax(0, 685fr) minmax(300px, 338fr);
+    gap: 33px;
+    align-items: stretch;
 }
 
+.vessel-bottom-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 685fr) minmax(300px, 338fr);
+    gap: 33px;
+    margin-top: 40px;
+    align-items: start;
+}
+
+.vessel-bottom-layout .vessel-section,
 .vessel-bottom-layout .vessel-card {
     margin: 0;
 }
 
-
 /* =========================================================
-   CARDS
+   CARDS DE SEÇÃO
 ========================================================= */
 
-.vessel-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+.vessel-card.p-card {
+    border: var(--border-width) solid var(--color-gray-100);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    box-shadow: 0px 1px 10px 0px rgba(142, 142, 147, 0.35);
+    color: var(--color-gray-900);
+}
+
+.vessel-card--upload.p-card {
+    border-radius: var(--radius-md);
 }
 
 .vessel-card .p-card-body {
-    padding: 26px;
+    padding: 40px 48px;
+}
+
+.vessel-card--basic .p-card-body {
+    padding: 40px 36px;
+}
+
+.vessel-card--upload .p-card-body {
+    padding: 28px 32px;
+}
+
+.vessel-card .p-card-content {
+    padding: 0;
 }
 
 .vessel-section {
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 }
-
 
 /* =========================================================
    TÍTULO DA SEÇÃO
@@ -95,67 +195,193 @@
 .section-title {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 26px;
+    gap: var(--space-3);
+    margin-bottom: 30px;
 }
 
 .section-title h2 {
     margin: 0;
-    font-size: 20px;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 24px;
     font-weight: 700;
-    color: #172033;
+    letter-spacing: -0.02em;
+    color: var(--color-primary-900);
 }
 
 .section-icon {
-    width: 28px;
-    height: 28px;
-
+    width: 31px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 6px;
-
-    background: #e9e8ff;
-    color: #3455c5;
+    border-radius: var(--radius-sm);
+    background: #e2e7ff;
+    color: #004f8d;
+    flex-shrink: 0;
 }
 
+.section-icon i {
+    font-size: 16px;
+}
 
 /* =========================================================
-   CAMPOS
+   CAMPOS DE FORMULÁRIO (INPUTS, SELECTS, LABELS)
 ========================================================= */
 
 .vessel-fields-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px 24px;
+    gap: 20px 48px;
+}
+
+.vessel-card--basic .vessel-fields-grid,
+.vessel-bottom-layout .vessel-fields-grid {
+    gap: 20px 28px;
 }
 
 .form-field {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: var(--space-2);
 }
 
 .form-field label {
-    font-size: 13px;
-    color: #3d4350;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: 18px;
+    font-weight: 400;
+    color: #121517;
 }
 
 .form-field label span {
-    color: #e53935;
+    color: var(--color-error-500);
+    font-weight: 600;
+    margin-left: 2px;
 }
 
-.form-field .p-inputtext,
+.form-field .p-inputtext:not(.p-dropdown-label),
 .form-field .p-inputnumber,
 .form-field .p-dropdown {
     width: 100%;
 }
 
-.form-field .p-inputtext,
-.form-field .p-inputnumber-input,
+.form-field .p-inputtext:not(.p-dropdown-label),
+.form-field .p-inputnumber-input {
+    height: 40px;
+    padding: 0 var(--space-3);
+    border: var(--border-width) solid var(--color-gray-700);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-gray-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    box-shadow: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
 .form-field .p-dropdown {
-    height: 38px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: var(--border-width) solid var(--color-gray-700);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-gray-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    box-shadow: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-field .p-inputtext:not(.p-dropdown-label)::placeholder,
+.form-field .p-inputnumber-input::placeholder,
+.form-field .p-dropdown .p-dropdown-label.p-placeholder {
+    color: var(--color-gray-700);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+}
+
+.form-field .p-dropdown .p-dropdown-label {
+    flex: 1 1 auto;
+    width: 1%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 var(--space-3);
+    border: 0 none;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    background: transparent;
+    box-shadow: none;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    color: var(--color-gray-900);
+}
+
+.form-field .p-dropdown .p-dropdown-trigger {
+    width: 38px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+    color: var(--color-gray-700);
+}
+
+.p-dropdown-panel {
+    background: var(--color-white);
+    border: var(--border-width) solid var(--color-outline-variant);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-elev-2);
+}
+
+.p-dropdown-panel .p-dropdown-items {
+    padding: var(--space-1) 0;
+    margin: 0;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    color: var(--color-gray-900);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    background: var(--color-gray-50);
+    color: var(--color-gray-900);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: var(--color-primary-50);
+    color: var(--color-primary-600);
+}
+
+.form-field .p-inputtext:not(.p-dropdown-label):enabled:focus,
+.form-field .p-inputnumber-input:enabled:focus,
+.form-field .p-dropdown:not(.p-disabled).p-focus {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.form-field .p-inputtext:disabled,
+.form-field .p-inputnumber-input:disabled,
+.form-field .p-dropdown.p-disabled {
+    background: var(--color-gray-50) !important;
+    border-color: var(--color-gray-500) !important;
+    color: var(--color-gray-500) !important;
+    opacity: 1 !important;
+}
+
+.form-field .p-inputtext:disabled::placeholder,
+.form-field .p-inputnumber-input:disabled::placeholder {
+    color: var(--color-gray-500) !important;
 }
 
 .form-field .p-inputnumber {
@@ -166,68 +392,103 @@
     width: 100%;
 }
 
-
 /* =========================================================
-   INFORMAÇÕES BÁSICAS + FOTO
+   CARD DE FOTO DA EMBARCAÇÃO
 ========================================================= */
-
-.vessel-basic-content {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-    gap: 28px;
-}
 
 .vessel-photo-card {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-
-    padding: 18px;
-
-    border: 1px solid #e3e5e8;
-    border-radius: 10px;
+    gap: 16px;
 }
 
 .photo-title {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #303745;
+    color: #131b2e;
 }
 
 .photo-title i {
-    color: #315ccc;
+    color: #004f8d;
+    font-size: 16px;
 }
 
-.vessel-photo-card small {
-    color: #7b8190;
+.photo-title strong {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #131b2e;
+}
+
+.photo-subtitle {
+    display: block;
+    color: #414751;
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: var(--leading-caption);
 }
 
 .photo-placeholder {
-    min-height: 150px;
-
+    position: relative;
+    height: 192px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 10px;
-
-    border-radius: 8px;
-
-    background: #f1f3f6;
-    color: #8a909b;
+    border-radius: var(--radius-sm);
+    background: #eaedff;
+    box-shadow: inset 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
+    color: var(--color-gray-600);
+    overflow: hidden;
 }
 
 .photo-placeholder i {
-    font-size: 32px;
+    font-size: 36px;
+    color: var(--color-gray-500);
+}
+
+.photo-placeholder span {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    color: var(--color-gray-600);
 }
 
 .photo-placeholder img {
     width: 100%;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
+}
+
+.photo-overlay-badge {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: var(--radius-xs);
+    background: rgba(19, 27, 46, 0.75);
+}
+
+.photo-overlay-badge span {
+    color: #faf8ff;
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 16.5px;
+}
+
+.photo-overlay-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background: #00a9fd;
+    flex-shrink: 0;
 }
 
 .photo-upload {
@@ -236,44 +497,71 @@
 
 .photo-upload .p-button {
     width: 100%;
+    height: 40px;
     justify-content: center;
-    min-height: 0;
-    height: auto;
+    padding: 11px 16px;
+    border: 0 !important;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-500) !important;
+    box-shadow: var(--shadow-elev-2);
+    color: var(--color-white) !important;
+    font-family: var(--font-sans);
+    font-size: var(--text-label-md);
+    font-weight: var(--font-weight-label-md);
+}
+
+.photo-upload .p-button:hover {
+    background: var(--color-primary-600) !important;
 }
 
 .photo-upload .p-fileupload-buttonbar {
     padding: 0;
     border: none;
+    background: transparent;
     margin: 0;
 }
 
 .photo-upload .p-fileupload-content {
-    min-height: 0;
-    padding: 0;
+    display: none;
 }
 
 /* =========================================================
-   DOCUMENTOS
+   CARD DE DOCUMENTAÇÃO TÉCNICA
 ========================================================= */
 
-.documents-description {
-    color: #7c8491;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.upload-empty {
-    min-height: 220px;
+.vessel-documents-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 16px;
-    color: #7c8491;
 }
 
-.upload-empty i {
-    font-size: 32px;
+.documents-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.documents-header i {
+    font-size: 16px;
+    color: var(--color-gray-600);
+}
+
+.documents-header h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #131b2e;
+}
+
+.documents-description {
+    margin: 0;
+    color: #414751;
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    line-height: var(--leading-caption);
 }
 
 .documents-upload {
@@ -283,74 +571,118 @@
 
 .documents-upload .p-fileupload-content {
     order: 1;
-}
-
-.documents-upload .p-fileupload-buttonbar {
-    order: 2;
-}
-
-.documents-upload .p-fileupload-buttonbar .p-button {
-    width: 100%;
-    justify-content: center;
-    height: 56px;
-    font-size: 20px;
-}
-
-.documents-upload .p-fileupload-buttonbar {
-    padding: 0;
-    border: none;
-    margin-top: 20px;
-}
-
-.documents-upload .p-fileupload-content {
-    min-height: 220px;
+    min-height: 192px;
+    padding: var(--space-4);
+    border: var(--border-width) solid var(--color-primary-200);
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-50);
+    box-shadow: inset 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* =========================================================
-   BOTÕES FINAIS
-========================================================= */
-
-.vessel-footer-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 24px;
+.documents-upload .p-fileupload-buttonbar {
+    order: 2;
+    padding: 0;
+    border: none;
+    background: transparent;
+    margin-top: 16px;
 }
 
+.documents-upload .p-fileupload-buttonbar .p-button {
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 11px 16px;
+    border: 0 !important;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-500) !important;
+    box-shadow: var(--shadow-elev-2);
+    color: var(--color-white) !important;
+    font-family: var(--font-sans);
+    font-size: var(--text-label-md);
+    font-weight: var(--font-weight-label-md);
+}
+
+.documents-upload .p-fileupload-buttonbar .p-button:hover {
+    background: var(--color-primary-600) !important;
+}
+
+.documents-upload .p-fileupload-buttonbar .p-button .p-button-icon {
+    margin: 0;
+    font-size: 15px;
+}
+
+.upload-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--color-gray-700);
+    text-align: center;
+}
+
+.upload-empty i {
+    font-size: 64px;
+    color: var(--color-gray-600);
+}
+
+.upload-empty span {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+    font-weight: 600;
+    color: var(--color-gray-700);
+}
+
+.documents-count {
+    display: block;
+    color: var(--color-gray-600);
+    font-family: var(--font-sans);
+    font-size: var(--text-caption);
+    text-align: center;
+}
 
 /* =========================================================
    RESPONSIVO
 ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
     .vessel-header {
         flex-direction: column;
+        align-items: flex-start;
     }
 
-    .vessel-basic-content {
-        grid-template-columns: 1fr;
-    }
-
+    .vessel-basic-content,
     .vessel-bottom-layout {
         grid-template-columns: 1fr;
     }
+
+    .vessel-footer-actions {
+        max-width: 100%;
+    }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+    .vessel-card .p-card-body,
+    .vessel-card--basic .p-card-body {
+        padding: 24px;
+    }
+
     .vessel-fields-grid {
         grid-template-columns: 1fr;
     }
 
-    .vessel-header__actions {
+    .vessel-header__actions,
+    .vessel-footer-actions,
+    .vessel-actions-secondary {
         width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .vessel-footer-actions {
-        justify-content: stretch;
         flex-wrap: wrap;
     }
 }
